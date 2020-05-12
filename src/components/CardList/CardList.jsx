@@ -1,8 +1,9 @@
 import React from "react";
+import { Loader } from "../common";
 import "./listCard.css";
 
-const CardListBase = () => {
-  return <div>list card</div>;
+const CardList = () => {
+  return <Loader />;
 };
 
-export { CardListBase };
+export { CardList };

@@ -1,10 +1,10 @@
 import { shallow } from "enzyme";
 import React from "react";
-import { CardListBase } from "../CardList";
+import { CardList } from "../CardList";
 
 describe("Detail Card", () => {
   it("renders without crashing", () => {
-    const wrapper = shallow(<CardListBase />);
+    const wrapper = shallow(<CardList />);
 
     expect(wrapper.exists()).toBe(true);
   });
