@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
+import { Grow } from "@material-ui/core";
 import { IconAction, IconRotateAction } from "../common";
 import { actions } from "../../ducks/post";
 import { colors } from "../../styles/colors";
@@ -46,51 +47,55 @@ const CardBase = (props) => {
   const handleDelete = () => onDeletePost({ id });
 
   return (
-    <div className="card-container">
-      <div className={["card-wrapper", expandedContentClass].join(" ")}>
-        <div className="card-header">
-          <h3>{title}</h3>
-          <div className="card-icon-wrapper">
-            <IconAction
-              onClick={handleFavorite}
-              iconName="favorite"
-              color={favoriteColor}
-            />
-            <IconAction
-              onClick={handleSelected}
-              iconName="selected"
-              color={selectedColor}
-            />
-            <IconAction onClick={handleDelete} iconName="trash" />
+    <Grow in>
+      <div className="card-container">
+        <div className={["card-wrapper", expandedContentClass].join(" ")}>
+          <div className="card-header">
+            <h3>{title}</h3>
+            <div className="card-icon-wrapper">
+              <IconAction
+                onClick={handleFavorite}
+                iconName="favorite"
+                color={favoriteColor}
+              />
+              <IconAction
+                onClick={handleSelected}
+                iconName="selected"
+                color={selectedColor}
+              />
+              <IconAction onClick={handleDelete} iconName="trash" />
+            </div>
+          </div>
+          <p className="card-subtitle">{`Start date: ${startDate}`}</p>
+          <p className="card-subtitle">{`Last Updated: ${lastUpdated}`}</p>
+          <p
+            className={["card-description", expandedDescriptionClass].join(" ")}
+          >
+            {description}
+          </p>
+          <div className={["card-link-wrapper", showLinksClass].join(" ")}>
+            <a
+              className="App-link"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn More
+            </a>
           </div>
         </div>
-        <p className="card-subtitle">{`Start date: ${startDate}`}</p>
-        <p className="card-subtitle">{`Last Updated: ${lastUpdated}`}</p>
-        <p className={["card-description", expandedDescriptionClass].join(" ")}>
-          {description}
-        </p>
-        <div className={["card-link-wrapper", showLinksClass].join(" ")}>
-          <a
-            className="App-link"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn More
-          </a>
+        <div
+          className={["card-expand-wrapper-more", expandedIconClass].join(" ")}
+        >
+          <IconRotateAction
+            iconName="expand"
+            rotated={expanded}
+            onRotate={handleExpandClick}
+            color={colors.typography}
+          />
         </div>
       </div>
-      <div
-        className={["card-expand-wrapper-more", expandedIconClass].join(" ")}
-      >
-        <IconRotateAction
-          iconName="expand"
-          rotated={expanded}
-          onRotate={handleExpandClick}
-          color={colors.typography}
-        />
-      </div>
-    </div>
+    </Grow>
   );
 };
 

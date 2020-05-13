@@ -1,3 +1,16 @@
+## Test
+
+Stack: ducks, redux, redux-saga, reselect, material-ui & axios,
+
+## NOTES:
+
+I try to have a solid architecture, that the code can improve in the future, without having to break things.
+styled-component applied very well for this exercise creating a theme, but I understood that we could not use tools for css. I use material-ui for icons that if.
+
+In the code I was marking things that can be improved and new features that should be done.
+
+## url: [truestar-robertdiazbejar](https://truestar-robertdiazbejar.netlify.app/) to view it in the browser.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
