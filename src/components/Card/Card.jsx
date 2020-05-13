@@ -6,13 +6,6 @@ import { actions } from "../../ducks/post";
 import { colors } from "../../styles/colors";
 import "./card.css";
 
-const title =
-  "Development of Advanced Anti-Reflection Coatings for High Performance Solar Energy Applications, Phase II Development of Advanced Anti-Reflection Coatings for High Performance Solar Energy Applications, Phase II";
-const startDate = "Apr 2014";
-const lastUpdated = "2018-10-10";
-const description =
-  "MicroLink Devices will increase the efficiency of multi-junction solar cells by designing and demonstrating advanced anti-reflection coatings (ARCs) that will provide a better broadband spectral response than that of conventional anti-reflection coatings.  Advanced coatings of this nature are needed to realize the full performance of the forthcoming generation of multi-junction solar cells, which will contain four or more junctions.  Two approaches to improving the performance of the antireflection coatings will be investigated:   *  develop multilayer dielectric antireflection coatings incorporating LaTiO3 to achieve significantly improved optical coupling between the coverglass and cell at the ultraviolet and infrared ends of the spectral range of interest; and  *  develop a structure and corresponding fabrication process to oxidize the Al-containing window layer in order to reduce the absorption of light at the short-end of the spectral range of interest, thus providing extra useable photons to the cell.     These two technologies will be integrated into a hybrid design which will provide the best possible coupling of light from cover glass to cell in order to achieve the highest possible efficiency in next-generation devices containing four or more junctions.  It is expected that the new coatings will enable a relative efficiency increase of at least 7%, corresponding to a 2.5% absolute efficiency increase.  The reliability and radiation tolerance of these materials and the solar cells incorporating the new designs will be tested.";
-
 const CardBase = (props) => {
   const {
     onSelectedPost,
@@ -25,6 +18,7 @@ const CardBase = (props) => {
     description,
     favorite,
     selected,
+    url,
   } = props;
 
   const [expanded, setExpanded] = useState(false);
@@ -78,7 +72,7 @@ const CardBase = (props) => {
         <div className={["card-link-wrapper", showLinksClass].join(" ")}>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href={url}
             target="_blank"
             rel="noopener noreferrer"
           >

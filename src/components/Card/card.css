@@ -80,6 +80,7 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   height: 66px;
+  margin-right: 8px;
 }
 
 .card-icon-wrapper {
