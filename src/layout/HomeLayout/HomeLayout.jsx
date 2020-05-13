@@ -1,13 +1,16 @@
-import React from "react";
-import { CardList } from "../../components";
+import React, { Fragment } from "react";
+import { CardList, Header } from "../../components";
 
 import "./home.css";
 
 const HomeLayout = () => {
   return (
-    <div className="layout">
-      <CardList />
-    </div>
+    <Fragment>
+      <Header />
+      <div className="layout">
+        <CardList />
+      </div>
+    </Fragment>
   );
 };
 
