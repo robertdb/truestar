@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { IconAction, IconRotateAction } from "../common";
+import { actions } from "../../ducks/post";
 import { colors } from "../../styles/colors";
 import "./card.css";
 
@@ -13,7 +14,19 @@ const description =
   "MicroLink Devices will increase the efficiency of multi-junction solar cells by designing and demonstrating advanced anti-reflection coatings (ARCs) that will provide a better broadband spectral response than that of conventional anti-reflection coatings.  Advanced coatings of this nature are needed to realize the full performance of the forthcoming generation of multi-junction solar cells, which will contain four or more junctions.  Two approaches to improving the performance of the antireflection coatings will be investigated:   *  develop multilayer dielectric antireflection coatings incorporating LaTiO3 to achieve significantly improved optical coupling between the coverglass and cell at the ultraviolet and infrared ends of the spectral range of interest; and  *  develop a structure and corresponding fabrication process to oxidize the Al-containing window layer in order to reduce the absorption of light at the short-end of the spectral range of interest, thus providing extra useable photons to the cell.     These two technologies will be integrated into a hybrid design which will provide the best possible coupling of light from cover glass to cell in order to achieve the highest possible efficiency in next-generation devices containing four or more junctions.  It is expected that the new coatings will enable a relative efficiency increase of at least 7%, corresponding to a 2.5% absolute efficiency increase.  The reliability and radiation tolerance of these materials and the solar cells incorporating the new designs will be tested.";
 
 const CardBase = (props) => {
-  const { favorite, selected } = props;
+  const {
+    onSelectedPost,
+    onFavoritePost,
+    onDeletePost,
+    id,
+    title,
+    startDate,
+    lastUpdated,
+    description,
+    favorite,
+    selected,
+  } = props;
+
   const [expanded, setExpanded] = useState(false);
 
   const handleExpandClick = () => {
@@ -34,14 +47,27 @@ const CardBase = (props) => {
     showLinksClass = "card-link-wrapper-show";
   }
 
+  const handleFavorite = () => onFavoritePost({ id });
+  const handleSelected = () => onSelectedPost({ id });
+  const handleDelete = () => onDeletePost({ id });
+
   return (
     <div className="card-container">
       <div className={["card-wrapper", expandedContentClass].join(" ")}>
         <div className="card-header">
           <h3>{title}</h3>
           <div className="card-icon-wrapper">
-            <IconAction iconName="favorite" color={favoriteColor} />
-            <IconAction iconName="selected" color={selectedColor} />
+            <IconAction
+              onClick={handleFavorite}
+              iconName="favorite"
+              color={favoriteColor}
+            />
+            <IconAction
+              onClick={handleSelected}
+              iconName="selected"
+              color={selectedColor}
+            />
+            <IconAction onClick={handleDelete} iconName="trash" />
           </div>
         </div>
         <p className="card-subtitle">{`Start date: ${startDate}`}</p>
@@ -79,7 +105,11 @@ CardBase.defaultProps = {
   selected: false,
 };
 
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  onSelectedPost: ({ id }) => dispatch(actions.setSelectedPost({ id })),
+  onFavoritePost: ({ id }) => dispatch(actions.setFavoritePost({ id })),
+  onDeletePost: ({ id }) => dispatch(actions.deletePost({ id })),
+});
 
 const enhance = compose(connect(null, mapDispatchToProps));
 

@@ -15,3 +15,18 @@ export const setLoader = ({ loading }) => ({
   type: actionTypes.SET_LOADER,
   payload: { loading },
 });
+
+export const deletePost = ({ id }) => ({
+  type: actionTypes.DELETE_POST,
+  payload: { id },
+});
+
+export const setSelectedPost = ({ id }) => ({
+  type: actionTypes.SET_SELECTED_POST,
+  payload: { id },
+});
+
+export const setFavoritePost = ({ id }) => ({
+  type: actionTypes.SET_FAVORITE_POST,
+  payload: { id },
+});
