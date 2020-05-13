@@ -1,0 +1,161 @@
+.card-container {
+  height: 500px;
+  width: 500px;
+  margin-bottom: 32px;
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+  background-color: #424242;
+  border-radius: 4px;
+}
+
+@media (max-width: 1280px) {
+  .card-container {
+    width: 350px;
+  }
+}
+
+@media (max-width: 960px) {
+  .card-container {
+    width: 300px;
+  }
+}
+
+.card-wrapper {
+  height: 80%;
+  width: 100%;
+  padding: 0px 16px;
+  padding-top: 16px;
+  background-color: white;
+}
+
+.card-wrapper-less {
+  animation: less 0.15s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes less {
+  from {
+    height: 90%;
+  }
+  to {
+    height: 80%;
+  }
+}
+
+.card-wrapper-more {
+  animation: more 0.15s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes more {
+  from {
+    height: 80%;
+  }
+  to {
+    height: 90%;
+  }
+}
+
+.card-expand-wrapper-more {
+  display: flex;
+  height: 20%;
+  justify-content: center;
+  align-items: center;
+  max-height: 50px;
+  z-index: 1;
+}
+
+.card-expand-wrapper-less {
+  height: 10%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.card-header h3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-icon-wrapper {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  max-height: 25px;
+}
+
+.card-subtitle {
+  margin-bottom: 6px;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+}
+
+.card-description {
+  margin-top: 16px;
+  line-height: 1.5em;
+}
+
+.card-description-ellipses {
+  display: -webkit-box;
+  -webkit-line-clamp: 9;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-description-expand {
+  height: 250px;
+  max-height: 250px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+  background: /* Shadow covers */ linear-gradient(
+      white 30%,
+      rgba(255, 255, 255, 0)
+    ),
+    linear-gradient(rgba(255, 255, 255, 0), white 70%) 0 100%,
+    /* Shadows */
+      radial-gradient(
+        farthest-side at 50% 0,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      ),
+    radial-gradient(
+        farthest-side at 50% 100%,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0)
+      )
+      0 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: 100% 40px, 100% 40px, 100% 5px, 100% 5px;
+  /* Opera doesn't support this in the shorthand */
+  background-attachment: local, local, scroll, scroll;
+}
+
+.card-description-expand::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.card-link-wrapper {
+  margin-top: 16px;
+  opacity: 0;
+}
+
+.card-link-wrapper-show {
+  animation: show 0.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
